@@ -1,9 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import * as React from "react";
+import * as ReactDOM from "react-dom/client";
 import './index.css';
-import Signup from './signup';
-import Signin from './signin';
-import ResetPassword from './resetPassword';
+import Signup from './routes/signup.tsx';
+import Signin from './routes/signin.tsx';
+import ResetPassword from './routes/resetPassword.tsx';
 import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,
@@ -11,6 +11,10 @@ import {
 } from "react-router-dom";
 
 const router = createBrowserRouter([
+  {
+    path:"/",
+    element: <Main />
+  },
   {
     path:"/sign-up",
     element: <Signup></Signup>
@@ -27,7 +31,13 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
+  <React.StrictMode>
   <RouterProvider router={router}/>
+  </React.StrictMode>
 );
 
-reportWebVitals();
+function Main(){
+  return <div className="main">
+    main
+  </div>
+}
