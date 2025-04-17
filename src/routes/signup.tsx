@@ -22,15 +22,46 @@ export default function Signup(){
         setEmail(value); break;}
       case 'password':{
         setPassword(value); break;}
-      case 'passworfVerif':{
+      case 'passwordVerif':{
         setPasswordVerif(value); break;}
     }
   }
   const handleSubmit = (event) =>{//проверить на валидироавнность всех полей
+    if(nameError =='' && emailError =='' && passwordError =='' && passwordVerifError =='')
+    {
+      alert('данные введены верно!');
+    }
     event.preventDefault();
   }
-  const nameValidate = () =>{ //добавить валидацию
-    if(name == '') {setNameError('поле обязательно!')}
+  const nameValidate = () =>{ 
+    if(name == '') {setNameError('поле обязательно!'); return;}
+    if(!/^[a-zA-Zа-яА-Я]+(\s[a-zA-Zа-яА-Я]+)*$/.test(name)) 
+      {setNameError('поле должно содержать только буквы (можно разделять одним пробелом)'); return;}
+    if(name.length <2){setNameError("минимальная длина поля: 2!");return;}
+    if(name.length >50){setNameError("максимальная длина поля: 50!");return;}
+    setNameError('');
+  }
+  const emailValidate = () =>{
+    if(email == '') {setEmailError('поле обязательно!'); return;}
+    if(!/^[a-zA-Zа-яА-Я0-9.%_+-]+@[a-zA-Zа-яА-Я0-9._-]+\.[a-zA-Zа-яА-Я]{2,}$/.test(email))
+    {setEmailError("email не соответствует формату электронной почты!"); return;}
+    //проверка на уникальность
+    setEmailError('');
+  }
+  const passwordValidate = () =>{
+    if(password == '') {setPasswordError('поле обязательно!'); return;}
+    if(password.length < 8){setPasswordError('минимальная длина паролья 8 символов!'); return;}
+    if(!(/[A-ZА-Я]/.test(password)&&
+        /[a-zа-я]/.test(password)&&
+        /[0-9]/.test(password)))
+      {setPasswordError('пароль должен содержать заглавные и строчные буквы, а также цифры!'); return;}
+    if(/\s/.test(password)){setPasswordError('пароль не должен содержать пробелы!'); return;}
+    setPasswordError('');
+  }
+  const passwordVerifValidate = () =>{
+    if(passwordVerif == '') {setPasswordVerifError('поле обязательно!'); return;}
+    if(passwordVerif != password){setPasswordVerifError('пароль должен совпадать!!'); return;}
+    setPasswordVerifError('');
   }
     return <div class='signup'>
       <form onSubmit={handleSubmit} novalidate="novalidate">
@@ -42,17 +73,21 @@ export default function Signup(){
         </label>
         <label>
           e-mail <br />
-          <input type="email" name="email" value = {email} onChange = {handleInput} placeholder ="введите электронную почту"/>
+          <input type="email" class={emailError !='' ? 'invalid' : ''} name="email" value = {email} onChange = {handleInput} placeholder ="введите электронную почту" onBlur={emailValidate}/>
+          <div class = "error" visible = {emailError !=''} >{emailError}</div>
         </label>
         <label>
           пароль <br />
-          <input type="password" name="password" value ={password} onChange = {handleInput} placeholder="введите пароль"/>
+          <input type="password" class={passwordError !='' ? 'invalid' : ''} name="password" value ={password} onChange = {handleInput} placeholder="введите пароль" onBlur = {passwordValidate}/>
+          <div class = "error" visible = {passwordError !=''} >{passwordError}</div>
         </label>
         <label>
           подтвердите пароль <br />
-          <input type="password" name="passwordVerif" value={passwordVerif} onChange = {handleInput} placeholder="подтвердите пароль"/>
+          <input type="password" class={passwordVerifError !='' ? 'invalid' : ''} name="passwordVerif" value={passwordVerif} onChange = {handleInput} placeholder="подтвердите пароль" onBlur = {passwordVerifValidate}/>
+          <div class = "error" visible = {passwordVerifError !=''} >{passwordVerifError}</div>
         </label>
         <button type="submit">Зарегистрироваться</button>
+        <a href="http://localhost:3000/sign-in">у меня есть аккаунт</a>
       </form>
     </div>
   }

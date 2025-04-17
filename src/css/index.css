@@ -25,6 +25,11 @@ body .signup form, body .signin form, body .resetPassword form {
   margin-bottom: 20%;
   font-size: 15pt;
 }
+body .signup form label .error, body .signin form label .error, body .resetPassword form label .error {
+  color: rgb(130, 15, 36);
+  font-size: 12pt;
+  margin: 0;
+}
 body .signup form label input, body .signin form label input, body .resetPassword form label input {
   font-weight: normal;
   width: 50%;
@@ -37,8 +42,8 @@ body .signup form label input, body .signin form label input, body .resetPasswor
   text-shadow: #D99543 1px 1px 5px;
   font-weight: bolder;
 }
-body .signup form label input .invalid, body .signin form label input .invalid, body .resetPassword form label input .invalid {
-  outline: red 1px solid;
+body .signup form label input.invalid, body .signin form label input.invalid, body .resetPassword form label input.invalid {
+  border: rgb(130, 15, 36) 1px solid;
 }
 body .signup form label input::-moz-placeholder, body .signin form label input::-moz-placeholder, body .resetPassword form label input::-moz-placeholder {
   color: #5e2f0d;
@@ -65,4 +70,9 @@ body .signup form button, body .signin form button, body .resetPassword form but
   color: #5e2f0d;
   text-shadow: #D99543 1px 1px 8px;
   font-weight: bolder;
+}
+body .signup form a, body .signin form a, body .resetPassword form a {
+  color: #5e2f0d;
+  text-decoration: none;
+  text-shadow: #d99643 0px 0px 4px;
 }/*# sourceMappingURL=index.css.map */

@@ -23,6 +23,11 @@ font-family:'Segoe UI', Tahoma, Verdana, sans-serif;
             margin-bottom: 20%;
             font-size: 15pt;
             label{
+                .error{
+                    color: rgb(130, 15, 36);
+                    font-size: 12pt;
+                    margin: 0;
+                }
                 input{
                     font-weight:normal;
                     width: 50%;
@@ -34,8 +39,8 @@ font-family:'Segoe UI', Tahoma, Verdana, sans-serif;
                     color: #5e2f0d;
                     text-shadow: #D99543 1px 1px 5px;
                     font-weight:bolder;
-                    .invalid{
-                        outline: red 1px solid;
+                    &.invalid{
+                        border:  rgb(130, 15, 36) 1px solid ;
                     }
                     &::placeholder{
                         color: #5e2f0d;
@@ -59,6 +64,11 @@ font-family:'Segoe UI', Tahoma, Verdana, sans-serif;
                 color: #5e2f0d;
                 text-shadow: #D99543 1px 1px 8px;
                 font-weight:bolder;
+            }
+            a{
+                color: #5e2f0d;
+                text-decoration: none;
+                text-shadow: #d99643 0px 0px 4px;
             }
         }
     }
