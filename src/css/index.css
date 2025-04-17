@@ -1,0 +1,68 @@
+body {
+  background: rgb(68, 113, 168);
+  background: radial-gradient(circle, rgb(48, 71, 139) 0%, rgb(11, 18, 80) 100%);
+  font-family: "Segoe UI", Tahoma, Verdana, sans-serif;
+}
+body .signup, body .signin, body .resetPassword {
+  background: rgb(114, 58, 18);
+  background: radial-gradient(circle, rgb(168, 123, 68) 10%, rgb(114, 58, 18) 80%);
+  box-shadow: rgba(19, 13, 90, 0.4823529412) 5px 10px 10px 10px;
+  border-radius: 20px;
+  width: 400px;
+  height: 500px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  color: #5e2f0d;
+  text-shadow: #D99543 1px 1px 5px;
+}
+body .signup form, body .signin form, body .resetPassword form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 20%;
+  font-size: 15pt;
+}
+body .signup form label input, body .signin form label input, body .resetPassword form label input {
+  font-weight: normal;
+  width: 50%;
+  height: 15pt;
+  background: rgb(217, 149, 67);
+  background: radial-gradient(circle, rgb(217, 149, 67) 0%, rgb(168, 123, 68) 100%);
+  border: #5e2f0d outset 2px;
+  border-radius: 20px;
+  color: #5e2f0d;
+  text-shadow: #D99543 1px 1px 5px;
+  font-weight: bolder;
+}
+body .signup form label input .invalid, body .signin form label input .invalid, body .resetPassword form label input .invalid {
+  outline: red 1px solid;
+}
+body .signup form label input::-moz-placeholder, body .signin form label input::-moz-placeholder, body .resetPassword form label input::-moz-placeholder {
+  color: #5e2f0d;
+  text-shadow: #D99543 1px 1px 5px;
+  font-weight: lighter;
+}
+body .signup form label input::placeholder, body .signin form label input::placeholder, body .resetPassword form label input::placeholder {
+  color: #5e2f0d;
+  text-shadow: #D99543 1px 1px 5px;
+  font-weight: lighter;
+}
+body .signup form label input:focus, body .signin form label input:focus, body .resetPassword form label input:focus {
+  outline: 0;
+}
+body .signup form button, body .signin form button, body .resetPassword form button {
+  width: 55%;
+  height: 25pt;
+  margin: auto;
+  font-size: 12pt;
+  background: #D99543;
+  background: radial-gradient(circle, rgb(217, 149, 67) 30%, rgb(114, 58, 18) 100%);
+  border: #5e2f0d outset 2px;
+  border-radius: 5px;
+  color: #5e2f0d;
+  text-shadow: #D99543 1px 1px 8px;
+  font-weight: bolder;
+}/*# sourceMappingURL=index.css.map */
