@@ -31,7 +31,9 @@ export default function Signup(){
     if(nameError =='' && emailError =='' && passwordError =='' && passwordVerifError =='')
       {
         localStorage.setItem(email,name+"|"+password)
+        alert("Пользователь зарегистрирован");
       }
+      event.preventDefault();
   }
   const nameValidate = () =>{ 
     if(name == '') {setNameError('поле обязательно!'); return;}

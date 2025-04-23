@@ -3,13 +3,18 @@ body {
   background: radial-gradient(circle, rgb(48, 71, 139) 0%, rgb(11, 18, 80) 100%);
   font-family: "Segoe UI", Tahoma, Verdana, sans-serif;
 }
+body .signup {
+  height: 500px;
+}
+body .signin {
+  height: 400px;
+}
 body .signup, body .signin, body .resetPassword {
   background: rgb(114, 58, 18);
   background: radial-gradient(circle, rgb(168, 123, 68) 10%, rgb(114, 58, 18) 80%);
   box-shadow: rgba(19, 13, 90, 0.4823529412) 5px 10px 10px 10px;
   border-radius: 20px;
   width: 400px;
-  height: 500px;
   margin: auto;
   display: flex;
   justify-content: center;
