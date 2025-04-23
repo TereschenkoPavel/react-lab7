@@ -72,7 +72,7 @@ export default function Signin(){
           <input type="password" class={passwordError !='' ? 'invalid' : ''} name="password" value ={password} onChange = {handleInput} placeholder="введите пароль" onBlur = {passwordValidate}/>
           <div class = "error" visible = {passwordError !=''} >{passwordError}</div>
         </label>
-        <button type="submit">Зарегистрироваться</button>
+        <button type="submit">Войти</button>
         <a href="http://localhost:3000/sign-up">Зарегистрироваться</a>
         <a href="http://localhost:3000/reset-password">я не помню пароль</a>
       </form>
