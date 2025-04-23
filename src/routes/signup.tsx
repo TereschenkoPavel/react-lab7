@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import '../css/index.css';
 import ReactDOM from 'react-dom/client';
 
+
 export default function Signup(){
   const [name,setName]:[string,React.Dispatch<React.SetStateAction<string>>] = useState("");
   const [email,setEmail]:[string,React.Dispatch<React.SetStateAction<string>>] = useState("");
@@ -28,10 +29,9 @@ export default function Signup(){
   }
   const handleSubmit = (event) =>{//проверить на валидироавнность всех полей
     if(nameError =='' && emailError =='' && passwordError =='' && passwordVerifError =='')
-    {
-      alert('данные введены верно!');
-    }
-    event.preventDefault();
+      {
+        localStorage.setItem(email,name+"|"+password)
+      }
   }
   const nameValidate = () =>{ 
     if(name == '') {setNameError('поле обязательно!'); return;}
@@ -45,7 +45,10 @@ export default function Signup(){
     if(email == '') {setEmailError('поле обязательно!'); return;}
     if(!/^[a-zA-Zа-яА-Я0-9.%_+-]+@[a-zA-Zа-яА-Я0-9._-]+\.[a-zA-Zа-яА-Я]{2,}$/.test(email))
     {setEmailError("email не соответствует формату электронной почты!"); return;}
-    //проверка на уникальность
+    for(let key of Object.keys(localStorage)){
+      if (key == email)
+      {setEmailError("данный email уже используется!"); return;}
+    }
     setEmailError('');
   }
   const passwordValidate = () =>{
@@ -56,6 +59,8 @@ export default function Signup(){
         /[0-9]/.test(password)))
       {setPasswordError('пароль должен содержать заглавные и строчные буквы, а также цифры!'); return;}
     if(/\s/.test(password)){setPasswordError('пароль не должен содержать пробелы!'); return;}
+    if(password == passwordVerif)    
+      setPasswordVerifError('');
     setPasswordError('');
   }
   const passwordVerifValidate = () =>{
