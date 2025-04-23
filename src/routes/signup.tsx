@@ -9,13 +9,16 @@ export default function Signup(){
   const [password,setPassword]:[string,React.Dispatch<React.SetStateAction<string>>] = useState("");
   const [passwordVerif,setPasswordVerif]:[string,React.Dispatch<React.SetStateAction<string>>] = useState("");
 
+  const [hidePass, setHidePass]:[boolean,React.Dispatch<React.SetStateAction<boolean>>] = useState(true);
+
+
   const [nameError,setNameError]:[string,React.Dispatch<React.SetStateAction<string>>] = useState("");
   const [emailError,setEmailError]:[string,React.Dispatch<React.SetStateAction<string>>] = useState("");
   const [passwordError,setPasswordError]:[string,React.Dispatch<React.SetStateAction<string>>] = useState("");
   const [passwordVerifError,setPasswordVerifError]:[string,React.Dispatch<React.SetStateAction<string>>] = useState("");
 
   const handleInput = (event) =>{
-    const {type,name,value} = event.target;
+    const {name,value} = event.target;
     switch (name){
       case 'name':{
         setName(value); break;}
@@ -55,7 +58,7 @@ export default function Signup(){
   }
   const passwordValidate = () =>{
     if(password == '') {setPasswordError('поле обязательно!'); return;}
-    if(password.length < 8){setPasswordError('минимальная длина паролья 8 символов!'); return;}
+    if(password.length < 8){setPasswordError('минимальная длина пароля 8 символов!'); return;}
     if(!(/[A-ZА-Я]/.test(password)&&
         /[a-zа-я]/.test(password)&&
         /[0-9]/.test(password)))
@@ -80,12 +83,15 @@ export default function Signup(){
         </label>
         <label>
           e-mail <br />
-          <input type="email" class={emailError !='' ? 'invalid' : ''} name="email" value = {email} onChange = {handleInput} placeholder ="введите электронную почту" onBlur={emailValidate}/>
+            <input type="email" class={emailError !='' ? 'invalid' : ''} name="email" value = {email} onChange = {handleInput} placeholder ="введите электронную почту" onBlur={emailValidate}/>
           <div class = "error" visible = {emailError !=''} >{emailError}</div>
         </label>
         <label>
           пароль <br />
-          <input type="password" class={passwordError !='' ? 'invalid' : ''} name="password" value ={password} onChange = {handleInput} placeholder="введите пароль" onBlur = {passwordValidate}/>
+          <div>
+          <input type={hidePass?"password":"text"} class={passwordError !='' ? 'invalid' : ''} name="password" value ={password} onChange = {handleInput} placeholder="введите пароль" onBlur = {passwordValidate}/>
+          <input type="checkbox" class="hideCheck"  checked={hidePass} onChange={() => {setHidePass(!hidePass)}}/>  
+          </div>
           <div class = "error" visible = {passwordError !=''} >{passwordError}</div>
         </label>
         <label>

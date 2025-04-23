@@ -8,6 +8,8 @@ export default function Signin(){
   const [email,setEmail]:[string,React.Dispatch<React.SetStateAction<string>>] = useState("");
   const [password,setPassword]:[string,React.Dispatch<React.SetStateAction<string>>] = useState("");
   
+  const [hidePass, setHidePass]:[boolean,React.Dispatch<React.SetStateAction<boolean>>] = useState(true);
+
   const [emailError,setEmailError]:[string,React.Dispatch<React.SetStateAction<string>>] = useState("");
   const [passwordError,setPasswordError]:[string,React.Dispatch<React.SetStateAction<string>>] = useState("");
   
@@ -69,7 +71,10 @@ export default function Signin(){
         </label>
         <label>
           пароль <br />
-          <input type="password" class={passwordError !='' ? 'invalid' : ''} name="password" value ={password} onChange = {handleInput} placeholder="введите пароль" onBlur = {passwordValidate}/>
+          <div>
+          <input type={hidePass?"password":"text"} class={passwordError !='' ? 'invalid' : ''} name="password" value ={password} onChange = {handleInput} placeholder="введите пароль" onBlur = {passwordValidate}/>
+          <input type="checkbox" class="hideCheck"  checked={hidePass} onChange={() => {setHidePass(!hidePass)}}/>  
+          </div>
           <div class = "error" visible = {passwordError !=''} >{passwordError}</div>
         </label>
         <button type="submit">Войти</button>

@@ -35,7 +35,22 @@ body .signup form label .error, body .signin form label .error, body .resetPassw
   font-size: 12pt;
   margin: 0;
 }
+body .signup form label div, body .signin form label div, body .resetPassword form label div {
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  width: 200px;
+}
+body .signup form label div input, body .signin form label div input, body .resetPassword form label div input {
+  width: 80%;
+  display: inline-block;
+}
+body .signup form label div .hideCheck, body .signup form label div input:checked, body .signin form label div .hideCheck, body .signin form label div input:checked, body .resetPassword form label div .hideCheck, body .resetPassword form label div input:checked {
+  display: inline-block;
+  width: 20px;
+}
 body .signup form label input, body .signin form label input, body .resetPassword form label input {
+  padding: 0;
   font-weight: normal;
   width: 50%;
   height: 15pt;
