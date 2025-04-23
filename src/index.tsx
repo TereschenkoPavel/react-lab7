@@ -38,6 +38,6 @@ root.render(
 
 function Main(){
   return <div className="main">
-    <a href="/sign-in">Регистрация</a>
+    <a href="/sign-up">Регистрация</a>
   </div>
 }
